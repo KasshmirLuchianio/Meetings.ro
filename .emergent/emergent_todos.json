@@ -1,22 +1,22 @@
 [
   {
     "content": "Phase 2: Build full commercial Meetings.ro landing page in EN and RO with all requested sections and pricing",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Ensure app CTA links to existing app preview URL and all sections are responsive",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Apply design guidelines and production-quality UI polish",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Phase 3: End-to-end testing with testing agent and fix all reported issues",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 3: Update plan.md with phase status and next steps",
-    "status": "pending"
+    "status": "completed"
   }
 ]
