@@ -86,13 +86,15 @@ Steps:
 - Add basic unit/regression checks where applicable (language strings map completeness).
 - Final cross-language review: ensure tone matches public sector audience; avoid overusing “AI” (use “Digital Secretary”).
 
-## 3. Next Actions
-- Confirm the **existing app URL** for primary CTA (and whether it differs for RO/EN).
-- Provide the **real monthly prices and inclusions** for each plan (hours processed, workspaces, limits, support tiers).
-- Decide bilingual routing preference:
-  - SEO-best: separate routes (/ro, /en)
-  - Simpler: single route with toggle + localStorage
-- Start Phase 1 by inspecting repo structure and implementing language + meta POC.
+## 3. Phase Status & Next Actions
+- **Phase 1 complete:** bilingual routing POC for `/ro` and `/en` is working.
+- Verified: language toggle switches instantly, preference persists, route-based metadata updates correctly, and mobile hero remains readable.
+- **Current phase:** Phase 2 full landing page implementation.
+- Next actions:
+  - Build full bilingual commercial page content and all requested sections.
+  - Apply design guidelines from `/app/design_guidelines.md`.
+  - Use the confirmed pricing and CTA URL in production UI.
+  - Run end-to-end testing for RO and EN routes and fix any issues.
 
 ## 4. Success Criteria
 - Bilingual toggle works instantly, persists, and is accessible.

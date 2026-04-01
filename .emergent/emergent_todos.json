@@ -1,23 +1,15 @@
 [
   {
-    "content": "Phase 1: Inspect current frontend structure and confirm bilingual SEO implementation approach",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 1: Build lightweight POC for /ro and /en routes with working EN|RO toggle and language-specific meta",
+    "content": "Phase 2: Build full commercial Meetings.ro landing page in EN and RO with all requested sections and pricing",
     "status": "in_progress"
   },
   {
-    "content": "Phase 2: Build full commercial Meetings.ro landing page in EN and RO with all requested sections and pricing",
-    "status": "pending"
-  },
-  {
     "content": "Phase 2: Ensure app CTA links to existing app preview URL and all sections are responsive",
-    "status": "pending"
+    "status": "in_progress"
   },
   {
     "content": "Phase 2: Apply design guidelines and production-quality UI polish",
-    "status": "pending"
+    "status": "in_progress"
   },
   {
     "content": "Phase 3: End-to-end testing with testing agent and fix all reported issues",
