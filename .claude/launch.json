@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kashmir-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["craco", "start"],
+      "port": 3000,
+      "cwd": "frontend",
+      "env": {
+        "NODE_OPTIONS": "--openssl-legacy-provider",
+        "BROWSER": "none"
+      }
+    }
+  ]
+}

@@ -11,7 +11,6 @@ import {
   FolderTree,
   Globe2,
   Landmark,
-  Mail,
   Menu,
   Newspaper,
   Scale,
@@ -565,7 +564,7 @@ const PricingSection = ({ content, lang, billingMode, setBillingMode }) => {
             </div>
           </div>
         </div>
-        <div className="grid gap-4 xl:grid-cols-4">
+        <div className="grid gap-4 lg:grid-cols-3">
           {content.pricing.plans.map((plan) => {
             const useAnnual = billingMode === "annual" && plan.name !== "Enterprise";
             const price = useAnnual ? plan.annualPrice : plan.monthlyPrice;
@@ -612,56 +611,14 @@ const PricingSection = ({ content, lang, billingMode, setBillingMode }) => {
                     ))}
                   </div>
 
-                  {plan.ctaType === "coming-soon" ? (
-                    <a
-                      href={STORE_PLACEHOLDER_URL}
-                      title={content.store.tooltip}
-                      className="coming-soon-link button-secondary w-full rounded-full px-5 text-sm font-semibold"
-                      data-testid={`${plan.testid}-cta`}
-                      onClick={(event) => event.preventDefault()}
-                    >
-                      {plan.ctaLabel}
-                    </a>
-                  ) : null}
-
-                  {plan.ctaType === "store-badges" ? (
-                    <div className="space-y-3" data-testid="pricing-business-store-cta">
-                      <p className="text-sm font-semibold text-[color:var(--brand-800)]">{plan.ctaLabel}</p>
-                      <StoreBadgeGroup lang={lang} tooltip={content.store.tooltip} testIdPrefix="pricing-business-store" />
-                    </div>
-                  ) : null}
-
-                  {plan.ctaType === "mailto" ? (
-                    <Button asChild className="button-primary w-full rounded-full px-5 text-sm font-semibold" data-testid="pricing-enterprise-cta">
-                      <a href={plan.ctaHref}>
-                        <Mail className="h-4 w-4" />
-                        {plan.ctaLabel}
-                      </a>
-                    </Button>
-                  ) : null}
+                  <div className="space-y-3" data-testid={`${plan.testid}-cta`}>
+                    <p className="text-sm font-semibold text-[color:var(--brand-800)]">{plan.ctaLabel}</p>
+                    <StoreBadgeGroup lang={lang} tooltip={content.store.tooltip} testIdPrefix={`pricing-${plan.name.toLowerCase()}-store`} />
+                  </div>
                 </CardContent>
               </Card>
             );
           })}
-        </div>
-        <div className="surface-card rounded-[28px] p-6 sm:p-8" data-testid="pricing-addon-card">
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.08em] text-[color:var(--brand-800)]">{content.pricing.addOn.title}</p>
-              <div className="flex items-end gap-1">
-                <span className="font-['Space_Grotesk'] text-4xl font-bold tracking-[-0.04em] text-[color:var(--text-strong)]">{content.pricing.addOn.price}</span>
-                <span className="pb-1 text-sm font-medium text-[color:var(--text-muted)]">{content.pricing.addOn.period}</span>
-              </div>
-              <p className="text-sm leading-7 text-[color:var(--text-muted)]">{content.pricing.addOn.detail}</p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              {content.pricing.addOn.verticals.map((vertical) => (
-                <span key={vertical} className="rounded-full border border-[color:var(--border)] bg-white px-4 py-2 text-sm font-medium text-[color:var(--text-strong)]">
-                  {vertical}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
         <div className="flex flex-col gap-3 text-sm text-[color:var(--text-muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>{content.pricing.vatNote}</p>
@@ -742,16 +699,19 @@ const Footer = ({ content, lang }) => (
         <p className="max-w-[62ch] text-sm leading-7 text-[color:var(--text-muted)]">{content.footer.statement}</p>
         <p className="text-sm font-medium text-[color:var(--brand-800)]">{content.footer.support}</p>
       </div>
-      <div className="flex flex-col gap-3 lg:items-end">
-        <a
-          href={STORE_PLACEHOLDER_URL}
-          title={content.store.tooltip}
-          className="simple-link text-sm font-semibold"
-          data-testid="footer-download-link"
-          onClick={(event) => event.preventDefault()}
-        >
-          {content.navigation.download}
-        </a>
+      <div className="flex flex-col gap-4 lg:items-end">
+        <div className="flex flex-wrap gap-4">
+          {content.footer.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="simple-link text-sm font-medium"
+              data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
         <span className="text-sm text-[color:var(--text-muted)]">{content.footer.copyright}</span>
       </div>
     </div>
