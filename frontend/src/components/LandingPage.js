@@ -72,7 +72,7 @@ const getRouteUrl = (lang, hash = "") => `${SITE_URL}/${lang}${hash}`;
 
 const createPricingSchema = (lang, content, billingMode) => {
   const offerPlans = content.pricing.plans.map((plan) => {
-    const useAnnual = billingMode === "annual" && plan.name !== "Enterprise";
+    const useAnnual = billingMode === "annual";
     const price = useAnnual ? plan.annualPrice : plan.monthlyPrice;
     const cleanPrice = price.replace("€", "");
     const period = useAnnual ? plan.annualPeriod : plan.monthlyPeriod;
@@ -566,7 +566,7 @@ const PricingSection = ({ content, lang, billingMode, setBillingMode }) => {
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {content.pricing.plans.map((plan) => {
-            const useAnnual = billingMode === "annual" && plan.name !== "Enterprise";
+            const useAnnual = billingMode === "annual";
             const price = useAnnual ? plan.annualPrice : plan.monthlyPrice;
             const period = useAnnual ? plan.annualPeriod : plan.monthlyPeriod;
             const badgeClassName =

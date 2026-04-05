@@ -7,12 +7,12 @@ export const landingContent = {
   ro: {
     locale: "ro_RO",
     meta: {
-      title: "Meetings.ro — Înregistrare și Transcriere AI",
+      title: "Meetings.ro — Transcriere și Rapoarte Structurate",
       description:
-        "Înregistrare și transcriere AI pentru ședințe, interviuri și rapoarte structurate. Creat pentru Banking, Legal, Jurnalism și administrație publică.",
+        "Transcriere automată pentru ședințe, interviuri și rapoarte structurate. Creat pentru Banking, Legal, Jurnalism și administrație publică.",
       keywords: [
-        "inregistrare AI",
-        "transcriere AI",
+        "inregistrare automata",
+        "transcriere automata",
         "raport structurat automat",
         "software primarie",
         "minute sedinta",
@@ -36,10 +36,10 @@ export const landingContent = {
       altPlayStore: "Descarcă Meetings.ro din Google Play",
     },
     hero: {
-      eyebrow: "Transcriere AI pentru echipe și organizații",
+      eyebrow: "Transcriere automată pentru echipe și organizații",
       title: "Orice ședință. Raport în minute.",
       lead:
-        "Transcriere AI + rapoarte structurate pentru Banking, Legal, Jurnalism și administrație publică. Totul într-un flux simplu, clar și ușor de verificat.",
+        "Transcriere automată + rapoarte structurate pentru Banking, Legal, Jurnalism și administrație publică. Totul într-un flux simplu, clar și ușor de verificat.",
       secondaryCta: "Vezi cum arată raportul",
       trustLine: "Dacă știi să folosești WhatsApp, știi să folosești Meetings.",
       proofs: [
@@ -286,12 +286,12 @@ export const landingContent = {
   en: {
     locale: "en_US",
     meta: {
-      title: "Meetings.ro — AI Recording & Transcription",
+      title: "Meetings.ro — Automated Transcription & Structured Reports",
       description:
-        "AI recording and transcription for meetings, interviews and structured reports. Built for Banking, Legal, Journalism and public administration.",
+        "Automated transcription for meetings, interviews and structured reports. Built for Banking, Legal, Journalism and public administration.",
       keywords: [
-        "AI recording",
-        "AI transcription",
+        "automated recording",
+        "automated transcription",
         "automated structured report",
         "public administration software",
         "meeting minutes",
@@ -315,10 +315,10 @@ export const landingContent = {
       altPlayStore: "Download Meetings.ro from Google Play",
     },
     hero: {
-      eyebrow: "AI transcription for teams and organizations",
+      eyebrow: "Automated transcription for teams and organizations",
       title: "Any meeting. Report in minutes.",
       lead:
-        "AI transcription + structured reports for Banking, Legal, Journalism and public administration. Everything stays in a simple workflow that is easy to review.",
+        "Automated transcription + structured reports for Banking, Legal, Journalism and public administration. Everything stays in a simple workflow that is easy to review.",
       secondaryCta: "See the sample report",
       trustLine: "If you can use WhatsApp, you can use Meetings.",
       proofs: [
