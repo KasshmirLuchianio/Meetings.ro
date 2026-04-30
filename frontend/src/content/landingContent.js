@@ -1,5 +1,5 @@
 export const STORE_PLACEHOLDER_URL = "#coming-soon";
-export const SITE_URL = "https://meetings.ro";
+export const SITE_URL = "https://meetings-ro.app";
 export const OG_IMAGE_URL = `${SITE_URL}/assets/branding/og-image.png`;
 export const BRAND_LOGO_PATH = "/assets/branding/meetings-logo.svg";
 
