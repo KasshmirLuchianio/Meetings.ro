@@ -2,14 +2,15 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "kashmir-site",
+      "name": "meetings-ro",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["craco", "start"],
-      "port": 3000,
+      "port": 8080,
       "cwd": "frontend",
       "env": {
         "NODE_OPTIONS": "--openssl-legacy-provider",
-        "BROWSER": "none"
+        "BROWSER": "none",
+        "PORT": "8080"
       }
     }
   ]

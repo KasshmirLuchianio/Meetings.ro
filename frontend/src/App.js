@@ -7,12 +7,16 @@ import FunctionalitatiPage from "@/pages/ro/FunctionalitatiPage";
 import PreturiPage from "@/pages/ro/PreturiPage";
 import DomeniiPage from "@/pages/ro/DomeniiPage";
 import IntrebariPage from "@/pages/ro/IntrebariPage";
+import PrivacyPolicyPage from "@/pages/ro/PrivacyPolicyPage";
+import TermsPage from "@/pages/ro/TermsPage";
 
 import EnHomePage from "@/pages/en/HomePage";
 import FeaturesPage from "@/pages/en/FeaturesPage";
 import PricingPage from "@/pages/en/PricingPage";
 import IndustriesPage from "@/pages/en/IndustriesPage";
 import FaqPage from "@/pages/en/FaqPage";
+
+import CookieBanner from "@/components/CookieBanner";
 
 const SUPPORTED_LANGUAGES = ["ro", "en"];
 
@@ -50,10 +54,14 @@ function App() {
           <Route path="/en/pricing" element={<PricingPage />} />
           <Route path="/en/industries" element={<IndustriesPage />} />
           <Route path="/en/faq" element={<FaqPage />} />
+          {/* Legal — language-neutral */}
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
           {/* Redirect */}
           <Route path="/" element={<HomeRedirect />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <CookieBanner />
       </BrowserRouter>
     </HelmetProvider>
   );

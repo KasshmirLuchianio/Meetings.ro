@@ -163,16 +163,27 @@ const Footer = ({ content, lang }) => (
       </div>
       <div className="flex flex-col gap-4 lg:items-end">
         <div className="flex flex-wrap gap-4">
-          {content.footer.links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="simple-link text-sm font-medium"
-              data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-            >
-              {link.label}
-            </a>
-          ))}
+          {content.footer.links.map((link) =>
+            link.internal ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="simple-link text-sm font-medium"
+                data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="simple-link text-sm font-medium"
+                data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </div>
         <span className="text-sm text-[color:var(--text-muted)]">{content.footer.copyright}</span>
       </div>

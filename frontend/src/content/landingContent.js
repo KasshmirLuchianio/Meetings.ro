@@ -266,10 +266,10 @@ export const landingContent = {
       statement:
         "Meetings.ro — rapoarte structurate din orice ședință.",
       support: "Suport în română • GDPR • Creat pentru instituții",
-      copyright: "© 2026 Meetings.ro",
+      copyright: "© 2026 NEDEROV COMEX SRL",
       links: [
-        { label: "Termeni și condiții", href: "#termeni" },
-        { label: "Politică confidențialitate", href: "#confidentialitate" },
+        { label: "Termeni și condiții", href: "/terms", internal: true },
+        { label: "Politică confidențialitate", href: "/privacy-policy", internal: true },
         { label: "Contact", href: "mailto:hello@meetings.ro" },
       ],
     },
@@ -544,10 +544,10 @@ export const landingContent = {
       statement:
         "Meetings.ro — structured reports from any meeting.",
       support: "Romanian support • GDPR • Built for institutions",
-      copyright: "© 2026 Meetings.ro",
+      copyright: "© 2026 NEDEROV COMEX SRL",
       links: [
-        { label: "Terms & Conditions", href: "#terms" },
-        { label: "Privacy Policy", href: "#privacy" },
+        { label: "Terms & Conditions", href: "/terms", internal: true },
+        { label: "Privacy Policy", href: "/privacy-policy", internal: true },
         { label: "Contact", href: "mailto:hello@meetings.ro" },
       ],
     },
