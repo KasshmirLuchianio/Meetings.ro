@@ -29,10 +29,25 @@ const TermsPage = () => (
         <p className="text-sm text-[color:var(--text-muted)]">Ultima actualizare: 30 aprilie 2026</p>
       </header>
 
-      <Section title="1. Parties">
+      <Section title="1. Identificarea părților">
         <p>
-          Acești termeni reglementează relația dintre <strong className="text-[color:var(--text-strong)]">NEDEROV COMEX SRL</strong> (CUI RO46076724, denumit în continuare „noi" sau „Meetings.ro")
-          și orice persoană fizică sau juridică care utilizează platforma Meetings.ro (denumită „Utilizator").
+          Prezentul document reprezintă un contract cu forță juridică obligatorie încheiat între utilizator și{" "}
+          <strong className="text-[color:var(--text-strong)]">NEDEROV COMEX S.R.L.</strong> (operând platforma și brandul Meetings.ro / Kashmir Digital),
+          persoană juridică română, având Codul Unic de Înregistrare <strong className="text-[color:var(--text-strong)]">46076724</strong>,
+          înregistrată la Registrul Comerțului sub nr. <strong className="text-[color:var(--text-strong)]">J40/8510/2022</strong>,
+          cu sediul social în <strong className="text-[color:var(--text-strong)]">București, Sector 4, Str. Ienăchiță Văcărescu nr. 36, ap. 5</strong>,
+          capital social 200 RON.
+        </p>
+        <p>Date de contact oficiale:</p>
+        <ul className="ml-5 list-disc space-y-1">
+          <li><strong className="text-[color:var(--text-strong)]">Telefon:</strong> 0793 693 875</li>
+          <li><strong className="text-[color:var(--text-strong)]">Email suport și notificări legale:</strong>{" "}
+            <a href="mailto:support@meetings-ro.app" className="simple-link">support@meetings-ro.app</a>
+          </li>
+        </ul>
+        <p>
+          Acest contract este guvernat de legislația din România. Orice dispută va fi soluționată pe cale amiabilă
+          sau de către instanțele judecătorești competente din <strong className="text-[color:var(--text-strong)]">București</strong>.
         </p>
         <p>Prin crearea unui cont, Utilizatorul acceptă integral acești termeni.</p>
       </Section>
@@ -135,13 +150,17 @@ const TermsPage = () => (
 
       <Section title="8. Limitarea răspunderii">
         <p>
-          Meetings.ro oferă serviciul „ca atare". Nu garantăm acuratețea 100% a transcrierilor sau rapoartelor generate automat.
+          <strong className="text-[color:var(--text-strong)]">NEDEROV COMEX S.R.L.</strong> furnizează aplicația Meetings.ro{" "}
+          „ca atare" (<em>as is</em>). Nu garantăm acuratețea 100% a transcrierilor sau rapoartelor generate automat.
           Utilizatorul are responsabilitatea verificării și validării rapoartelor înainte de utilizare oficială.
         </p>
         <p>
-          Răspunderea noastră totală față de un Utilizator nu poate depăși sumele plătite de acesta în ultimele 3 luni.
-          Nu răspundem pentru daune indirecte, pierderi de profit sau daune consecutive.
+          Răspunderea noastră maximă cumulată pentru orice pretenții directe derivate din utilizarea platformei
+          este strict limitată la <strong className="text-[color:var(--text-strong)]">suma totală plătită de utilizator
+          către NEDEROV COMEX S.R.L. pentru serviciu în ultimele 3 luni calendaristice premergătoare evenimentului
+          care a generat dauna</strong>.
         </p>
+        <p>Nu răspundem pentru daune indirecte, pierderi de profit sau daune consecutive.</p>
       </Section>
 
       <Section title="9. Protecția datelor">
@@ -163,9 +182,9 @@ const TermsPage = () => (
       <Section title="11. Legea aplicabilă">
         <p>
           Acești termeni sunt guvernați de legea română. Litigiile se soluționează pe cale amiabilă sau,
-          în subsidiar, de instanțele competente din România.
+          în subsidiar, de instanțele judecătorești competente din <strong className="text-[color:var(--text-strong)]">București</strong>.
         </p>
-        <p>Contact: <a href="mailto:hello@meetings.ro" className="simple-link">hello@meetings.ro</a></p>
+        <p>Contact: <a href="mailto:support@meetings-ro.app" className="simple-link">support@meetings-ro.app</a> · Tel: 0793 693 875</p>
       </Section>
     </div>
   </PageLayout>

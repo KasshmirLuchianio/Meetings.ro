@@ -30,10 +30,22 @@ const PrivacyPolicyPage = () => (
 
       <Section title="1. Operatorul de date">
         <p>
-          <strong className="text-[color:var(--text-strong)]">NEDEROV COMEX SRL</strong>, cu sediul în România, CUI RO46076724,
-          este operatorul de date cu caracter personal în sensul Regulamentului (UE) 2016/679 (GDPR).
+          Operatorul datelor dumneavoastră cu caracter personal este{" "}
+          <strong className="text-[color:var(--text-strong)]">NEDEROV COMEX S.R.L.</strong>{" "}
+          (CUI 46076724, Reg. Com. J40/8510/2022, cu sediul în{" "}
+          <strong className="text-[color:var(--text-strong)]">București, Sector 4, Str. Ienăchiță Văcărescu nr. 36, ap. 5</strong>),
+          în sensul Regulamentului (UE) 2016/679 (GDPR).
         </p>
-        <p>Contact: <a href="mailto:gdpr@meetings.ro" className="simple-link">gdpr@meetings.ro</a></p>
+        <p>
+          Pentru orice solicitări privind exercitarea drepturilor GDPR (dreptul de acces, ștergere, portare, opoziție),
+          ne puteți contacta la:{" "}
+          <a href="mailto:support@meetings-ro.app" className="simple-link">support@meetings-ro.app</a>.
+        </p>
+        <p>
+          Serviciile noastre se adresează exclusiv persoanelor cu vârsta de cel puțin{" "}
+          <strong className="text-[color:var(--text-strong)]">16 ani</strong>.
+          NEDEROV COMEX S.R.L. nu colectează cu bună știință date de la persoane sub această vârstă.
+        </p>
       </Section>
 
       <Section title="2. Ce date colectăm">
@@ -75,7 +87,7 @@ const PrivacyPolicyPage = () => (
                 { name: "MongoDB Atlas", purpose: "Stocare conturi și rapoarte", location: "UE (Frankfurt)" },
                 { name: "Stripe, Inc.", purpose: "Procesare plăți", location: "SUA/UE (SCCs)" },
                 { name: "Resend, Inc.", purpose: "Trimitere e-mailuri tranzacționale", location: "SUA (SCCs)" },
-                { name: "SmartBill SRL", purpose: "Facturare fiscală", location: "România" },
+                { name: "SmartBill SRL", purpose: "Facturare fiscală & transmitere RO e-Factura către ANAF", location: "România" },
               ].map((row) => (
                 <tr key={row.name}>
                   <td className="py-2 font-medium text-[color:var(--text-strong)]">{row.name}</td>
@@ -88,6 +100,13 @@ const PrivacyPolicyPage = () => (
         </div>
         <p className="mt-3">
           Transferurile către SUA se realizează pe baza Clauzelor Contractuale Standard (SCCs) aprobate de Comisia Europeană.
+        </p>
+        <p className="mt-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-card)] p-4">
+          <strong className="text-[color:var(--text-strong)]">SmartBill &amp; ANAF (SPV):</strong> Pentru procesarea plăților și emiterea facturilor fiscale,
+          NEDEROV COMEX S.R.L. colectează datele de facturare furnizate de utilizator (Nume / Denumire companie, CUI, Adresă).
+          Aceste date sunt introduse în platforma procesatorului nostru de facturare (SmartBill) și transmise obligatoriu prin lege
+          către <strong className="text-[color:var(--text-strong)]">Agenția Națională de Administrare Fiscală (ANAF)</strong>{" "}
+          prin sistemul național <strong className="text-[color:var(--text-strong)]">RO e-Factura</strong>.
         </p>
       </Section>
 
@@ -111,7 +130,7 @@ const PrivacyPolicyPage = () => (
           <li><strong className="text-[color:var(--text-strong)]">Opoziție</strong> — împotriva prelucrărilor bazate pe interes legitim (art. 21 GDPR).</li>
           <li><strong className="text-[color:var(--text-strong)]">Plângere</strong> — la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href="https://www.dataprotection.ro" className="simple-link" target="_blank" rel="noopener noreferrer">dataprotection.ro</a>.</li>
         </ul>
-        <p>Exercitarea drepturilor: <a href="mailto:gdpr@meetings.ro" className="simple-link">gdpr@meetings.ro</a>. Răspundem în 30 de zile.</p>
+        <p>Exercitarea drepturilor: <a href="mailto:support@meetings-ro.app" className="simple-link">support@meetings-ro.app</a>. Răspundem în maximum 30 de zile.</p>
       </Section>
 
       <Section title="7. Cookie-uri">
