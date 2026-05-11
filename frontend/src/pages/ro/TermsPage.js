@@ -115,10 +115,24 @@ const TermsPage = () => (
         </p>
       </Section>
 
-      <Section title="5. Anulare și rambursare">
+      <Section title="5. Politica de plăți, rambursări și dreptul de retragere">
         <p>
-          Poți anula abonamentul oricând. Anularea intră în vigoare la sfârșitul perioadei de facturare curente.
-          Nu oferim rambursări proporționale pentru perioadele neutilizate, cu excepția cazurilor impuse de lege.
+          NEDEROV COMEX S.R.L. oferă servicii digitale prestate integral. Conform legislației în vigoare
+          (OUG 34/2014, art. 16, lit. m), consumatorii persoane fizice beneficiază de regulă de un drept de retragere de 14 zile.
+        </p>
+        <p>
+          Prin crearea contului, achiziționarea unui abonament și inițierea procesării oricărui fișier audio/video
+          în cadrul platformei Meetings.ro, Utilizatorul solicită și își dă{" "}
+          <strong className="text-[color:var(--text-strong)]">consimțământul prealabil expres</strong>{" "}
+          pentru începerea prestării serviciului digital. Utilizatorul confirmă că a luat cunoștință că, prin această
+          acțiune, <strong className="text-[color:var(--text-strong)]">își pierde dreptul legal de retragere și de
+          rambursare a sumelor plătite (refund)</strong>.
+        </p>
+        <p>
+          Abonamentele pot fi anulate în orice moment din panoul de setări al contului, anularea urmând să producă
+          efecte la finalul perioadei de facturare curente.{" "}
+          <strong className="text-[color:var(--text-strong)]">Nu se oferă rambursări (refunds) parțiale sau totale
+          pentru lunile deja începute sau pentru minutele neutilizate.</strong>
         </p>
         <p>
           Conturile Starter (gratuite) pot fi închise oricând fără nicio formalitate suplimentară.
