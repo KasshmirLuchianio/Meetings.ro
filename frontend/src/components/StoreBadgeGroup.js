@@ -77,9 +77,8 @@ export const StoreBadgeGroup = ({
             <a
               key={`${testIdPrefix}-${badge.key}`}
               href={isLive ? url : "#"}
-              title={isLive ? tooltip : undefined}
               aria-label={badge.alt}
-              className={`store-badge-link${isLive ? "" : " opacity-60 cursor-not-allowed"}`}
+              className="store-badge-link"
               data-testid={`${testIdPrefix}-${badge.key}`}
               target={isLive ? "_blank" : undefined}
               rel={isLive ? "noopener noreferrer" : undefined}
