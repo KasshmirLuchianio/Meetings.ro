@@ -1,4 +1,6 @@
 export const STORE_PLACEHOLDER_URL = "#coming-soon";
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=ro.meetingsapp.meetings";
+export const APP_STORE_URL = null; // not live yet
 export const SITE_URL = "https://meetings-ro.app";
 export const OG_IMAGE_URL = `${SITE_URL}/assets/branding/og-image.png`;
 export const BRAND_LOGO_PATH = "/assets/branding/meetings-logo.svg";

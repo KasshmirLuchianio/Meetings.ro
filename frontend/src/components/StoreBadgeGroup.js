@@ -1,6 +1,11 @@
 import { useMemo } from "react";
 
-import { STORE_PLACEHOLDER_URL } from "@/content/landingContent";
+import { GOOGLE_PLAY_URL, APP_STORE_URL } from "@/content/landingContent";
+
+const STORE_URLS = {
+  googlePlay: GOOGLE_PLAY_URL,
+  appStore: APP_STORE_URL,
+};
 
 const storeBadgeAssets = {
   ro: {
@@ -65,19 +70,25 @@ export const StoreBadgeGroup = ({
     <div className={`store-badge-cluster ${compact ? "compact" : ""} ${className}`.trim()}>
       {label ? <span className="store-badge-label">{label}</span> : null}
       <div className="store-badge-row" data-testid={testIdPrefix}>
-        {orderedBadges.map((badge) => (
-          <a
-            key={`${testIdPrefix}-${badge.key}`}
-            href={STORE_PLACEHOLDER_URL}
-            title={tooltip}
-            aria-label={badge.alt}
-            className="store-badge-link"
-            data-testid={`${testIdPrefix}-${badge.key}`}
-            onClick={(event) => event.preventDefault()}
-          >
-            <img src={badge.src} alt={badge.alt} className="store-badge-image" loading="lazy" />
-          </a>
-        ))}
+        {orderedBadges.map((badge) => {
+          const url = STORE_URLS[badge.key];
+          const isLive = Boolean(url);
+          return (
+            <a
+              key={`${testIdPrefix}-${badge.key}`}
+              href={isLive ? url : "#"}
+              title={isLive ? tooltip : undefined}
+              aria-label={badge.alt}
+              className={`store-badge-link${isLive ? "" : " opacity-60 cursor-not-allowed"}`}
+              data-testid={`${testIdPrefix}-${badge.key}`}
+              target={isLive ? "_blank" : undefined}
+              rel={isLive ? "noopener noreferrer" : undefined}
+              onClick={isLive ? undefined : (e) => e.preventDefault()}
+            >
+              <img src={badge.src} alt={badge.alt} className="store-badge-image" loading="lazy" />
+            </a>
+          );
+        })}
       </div>
     </div>
   );
