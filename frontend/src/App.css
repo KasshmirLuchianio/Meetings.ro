@@ -232,7 +232,7 @@ img {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 .store-badge-image {
