@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { BRAND_LOGO_PATH, landingContent } from "@/content/landingContent";
 import { StoreBadgeGroup } from "@/components/StoreBadgeGroup";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const STORAGE_KEY = "meetings-language";
 
@@ -212,6 +213,7 @@ export const PageLayout = ({ lang, children }) => {
       <Header content={content} lang={lang} onLanguageChange={handleLanguageChange} />
       <main>{children}</main>
       <Footer content={content} lang={lang} />
+      <WhatsAppButton lang={lang} />
     </div>
   );
 };

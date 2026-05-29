@@ -1,6 +1,7 @@
 export const STORE_PLACEHOLDER_URL = "#coming-soon";
 export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=ro.meetingsapp.meetings";
 export const APP_STORE_URL = null; // not live yet
+export const WHATSAPP_URL = "https://wa.me/40734968672";
 export const SITE_URL = "https://meetings-ro.app";
 export const OG_IMAGE_URL = `${SITE_URL}/assets/branding/og-image.png`;
 export const BRAND_LOGO_PATH = "/assets/branding/meetings-logo.svg";
@@ -217,8 +218,9 @@ export const landingContent = {
           annualPeriod: "/an",
           detail: "Ore nelimitate",
           features: ["Verticale nelimitate", "Export PDF + DOCX branded", "Stocare nelimitată", "SLA 99.9%", "Onboarding dedicat", "Factură fiscală"],
-          ctaLabel: "Alege Enterprise",
-          ctaType: "store-badges",
+          ctaLabel: "Contactează-ne",
+          ctaType: "contact",
+          ctaHref: "mailto:contact@meetings-ro.app",
           highlight: false,
           badgeTone: "enterprise",
           testid: "pricing-enterprise-card",
@@ -263,6 +265,18 @@ export const landingContent = {
       lead:
         "Descarcă Meetings.ro și uită de redactare.",
       secondary: "Vezi prețurile",
+    },
+    testimonials: {
+      eyebrow: "Deja folosit de",
+      clients: [
+        {
+          name: "GAL Oamenii Deltei",
+          role: "Asociație LEADER",
+          quote: "Rapoartele de ședință sunt gata înainte să ieșim din sală.",
+          plan: "Pro",
+          testid: "testimonial-gal-delta",
+        },
+      ],
     },
     footer: {
       statement:
@@ -495,8 +509,9 @@ export const landingContent = {
           annualPeriod: "/year",
           detail: "Unlimited hours",
           features: ["Unlimited verticals", "Branded PDF + DOCX export", "Unlimited storage", "99.9% SLA", "Dedicated onboarding", "Tax invoice"],
-          ctaLabel: "Choose Enterprise",
-          ctaType: "store-badges",
+          ctaLabel: "Contact us",
+          ctaType: "contact",
+          ctaHref: "mailto:contact@meetings-ro.app",
           highlight: false,
           badgeTone: "enterprise",
           testid: "pricing-enterprise-card",
@@ -541,6 +556,18 @@ export const landingContent = {
       lead:
         "Download Meetings.ro and forget about drafting.",
       secondary: "See pricing",
+    },
+    testimonials: {
+      eyebrow: "Already used by",
+      clients: [
+        {
+          name: "GAL Oamenii Deltei",
+          role: "LEADER Association",
+          quote: "Reports are ready before we leave the meeting room.",
+          plan: "Pro",
+          testid: "testimonial-gal-delta",
+        },
+      ],
     },
     footer: {
       statement:

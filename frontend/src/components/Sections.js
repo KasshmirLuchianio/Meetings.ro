@@ -8,11 +8,13 @@ import {
   FolderTree,
   Globe2,
   Landmark,
+  Mail,
   Newspaper,
   Scale,
   ScanSearch,
   ShieldCheck,
   UploadCloud,
+  Users,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -29,7 +31,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { STORE_PLACEHOLDER_URL, SITE_URL, OG_IMAGE_URL } from "@/content/landingContent";
+import { STORE_PLACEHOLDER_URL, SITE_URL, OG_IMAGE_URL, WHATSAPP_URL } from "@/content/landingContent";
 import { StoreBadgeGroup } from "@/components/StoreBadgeGroup";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -53,7 +55,7 @@ export const createPricingSchema = (lang, content, billingMode) => {
       price: cleanPrice,
       priceCurrency: "EUR",
       url: `${SITE_URL}/${lang}${lang === "ro" ? "/preturi" : "/pricing"}`,
-      availability: "https://schema.org/PreOrder",
+      availability: "https://schema.org/OnlineOnly",
       category: period,
     };
   });
@@ -463,7 +465,18 @@ export const PricingSection = ({ content, lang, billingMode, setBillingMode }) =
                   </div>
                   <div className="space-y-3" data-testid={`${plan.testid}-cta`}>
                     <p className="text-sm font-semibold text-[color:var(--brand-800)]">{plan.ctaLabel}</p>
-                    <StoreBadgeGroup lang={lang} tooltip={content.store.tooltip} testIdPrefix={`pricing-${plan.name.toLowerCase()}-store`} />
+                    {plan.ctaType === "contact" ? (
+                      <a
+                        href={plan.ctaHref}
+                        className="flex items-center justify-center gap-2 w-full rounded-full border border-[color:var(--border)] bg-[color:var(--brand-800)] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[color:var(--brand-900)]"
+                        data-testid={`${plan.testid}-contact-cta`}
+                      >
+                        <Mail className="h-4 w-4" />
+                        {plan.ctaLabel}
+                      </a>
+                    ) : (
+                      <StoreBadgeGroup lang={lang} tooltip={content.store.tooltip} testIdPrefix={`pricing-${plan.name.toLowerCase()}-store`} />
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -473,6 +486,45 @@ export const PricingSection = ({ content, lang, billingMode, setBillingMode }) =
         <div className="flex flex-col gap-3 text-sm text-[color:var(--text-muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>{content.pricing.vatNote}</p>
           <p>Schema.org Offer • EUR</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+export const TestimonialsSection = ({ content }) => {
+  const sectionRef = useReveal();
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <div ref={sectionRef} data-reveal>
+        <div className="surface-card rounded-[28px] px-6 py-6 sm:px-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--text-muted)]">
+              {content.testimonials.eyebrow}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {content.testimonials.clients.map((client) => (
+                <div
+                  key={client.name}
+                  className="flex items-center gap-3 rounded-2xl border border-[color:var(--border)] bg-white px-5 py-4"
+                  data-testid={client.testid}
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[color:rgba(27,42,74,0.08)]">
+                    <Users className="h-5 w-5 text-[color:var(--brand-800)]" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-[color:var(--text-strong)]">{client.name}</p>
+                    <p className="text-xs text-[color:var(--text-muted)]">{client.role} · Plan {client.plan}</p>
+                  </div>
+                  <span className="ml-2 rounded-full bg-[color:var(--success-bg)] px-3 py-1 text-xs font-semibold text-[color:var(--success)]">
+                    ✓ Client activ
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

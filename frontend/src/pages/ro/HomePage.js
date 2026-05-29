@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { PageLayout } from "@/components/PageLayout";
-import { HeroSection, ProblemSection, FinalCta } from "@/components/Sections";
+import { HeroSection, ProblemSection, TestimonialsSection, FinalCta } from "@/components/Sections";
 import { landingContent, SITE_URL, OG_IMAGE_URL } from "@/content/landingContent";
 
 const HomePage = () => {
@@ -24,6 +24,7 @@ const HomePage = () => {
       </Helmet>
       <HeroSection content={content} lang="ro" />
       <ProblemSection content={content} />
+      <TestimonialsSection content={content} />
       <FinalCta content={content} lang="ro" />
     </PageLayout>
   );
