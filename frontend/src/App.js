@@ -1,6 +1,12 @@
 import "@/App.css";
+import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import Lenis from "lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import RoHomePage from "@/pages/ro/HomePage";
 import FunctionalitatiPage from "@/pages/ro/FunctionalitatiPage";
@@ -37,7 +43,30 @@ const HomeRedirect = () => {
   return <Navigate to={`/${preferredLanguage}`} replace />;
 };
 
+const useSmoothScroll = () => {
+  useEffect(() => {
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (reduceMotion) return undefined;
+
+    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+
+    const tick = (time) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove(tick);
+      lenis.destroy();
+    };
+  }, []);
+};
+
 function App() {
+  useSmoothScroll();
+
   return (
     <HelmetProvider>
       <BrowserRouter>

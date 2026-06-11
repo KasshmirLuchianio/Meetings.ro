@@ -381,17 +381,154 @@ img {
   pointer-events: none;
 }
 
+/* GSAP owns reveal animation; CSS only sets the pre-paint hidden state. */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 0.24s ease,
-    transform 0.24s ease;
 }
 
 [data-reveal][data-revealed="true"] {
   opacity: 1;
-  transform: translateY(0);
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.hero-word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.hero-word-gold {
+  background: linear-gradient(120deg, var(--accent-gold) 0%, #d8b95c 50%, var(--accent-gold) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shine 5s ease-in-out infinite;
+}
+
+@keyframes gold-shine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-gold);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 150, 46, 0.45); }
+  50% { box-shadow: 0 0 0 6px rgba(184, 150, 46, 0); }
+}
+
+.device-float-wrap {
+  will-change: transform;
+}
+
+/* ── Cinematic scroll-scrub section ───────────────────────────── */
+.cinematic-scroll {
+  position: relative;
+}
+
+.cinematic-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cinematic-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 52%, rgba(18, 29, 52, 0.55) 100%),
+    linear-gradient(180deg, rgba(18, 29, 52, 0.35) 0%, transparent 18%, transparent 82%, rgba(18, 29, 52, 0.35) 100%);
+}
+
+.cinematic-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  margin: 0;
+  padding: 0 24px;
+  max-width: 92vw;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 6.5vw, 5.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  text-align: center;
+  color: #faf8f3;
+  text-shadow: 0 4px 40px rgba(18, 29, 52, 0.7);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.cinematic-line-gold {
+  background: linear-gradient(120deg, #d8b95c 0%, #b8962e 55%, #d8b95c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 4px 28px rgba(184, 150, 46, 0.35));
+}
+
+.hover-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(27, 42, 74, 0.14);
+  border-color: rgba(184, 150, 46, 0.38);
+}
+
+.price-highlight::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%);
+  transform: skewX(-18deg);
+  animation: card-shimmer 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes card-shimmer {
+  0%, 64% { left: -80%; }
+  88%, 100% { left: 130%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -405,6 +542,13 @@ img {
     transition: none;
   }
 
+  .hero-word-gold,
+  .hero-pulse-dot,
+  .price-highlight::after {
+    animation: none;
+  }
+
+  .hover-lift,
   .button-primary,
   .button-secondary,
   .button-ghost,
@@ -412,6 +556,10 @@ img {
   .simple-link,
   .store-badge-link {
     transition: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
   }
 }
 

@@ -31,9 +31,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { STORE_PLACEHOLDER_URL, SITE_URL, OG_IMAGE_URL, WHATSAPP_URL } from "@/content/landingContent";
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { SITE_URL, OG_IMAGE_URL } from "@/content/landingContent";
 import { StoreBadgeGroup } from "@/components/StoreBadgeGroup";
+import HeroCanvas from "@/components/HeroCanvas";
 import { useReveal } from "@/hooks/useReveal";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const sectionIconMap = {
   archive: FolderTree,
@@ -127,32 +134,113 @@ const DeviceMock = ({ content }) => (
   </div>
 );
 
+const SplitTitle = ({ text }) => {
+  const words = text.split(" ");
+  return (
+    <>
+      {words.map((word, index) => (
+        <span key={`${word}-${index}`} className="hero-word-mask">
+          <span className={`hero-word ${index === words.length - 1 ? "hero-word-gold" : ""}`}>{word}</span>
+          {index < words.length - 1 ? " " : null}
+        </span>
+      ))}
+    </>
+  );
+};
+
 export const HeroSection = ({ content, lang }) => {
-  const heroRef = useReveal();
+  const heroRef = useRef(null);
+  const deviceRef = useRef(null);
   const featuresHref = lang === "ro" ? "/ro/functionalitati" : "/en/features";
+
+  useLayoutEffect(() => {
+    const node = heroRef.current;
+    if (!node) return undefined;
+
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (reduceMotion) {
+      gsap.set(node.querySelectorAll(".hero-word, [data-hero-fade], [data-hero-proof]"), { clearProps: "all", opacity: 1 });
+      return undefined;
+    }
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.fromTo(
+        node.querySelectorAll(".hero-word"),
+        { yPercent: 112 },
+        { yPercent: 0, duration: 0.9, stagger: 0.07 },
+        0.1,
+      )
+        .fromTo(
+          node.querySelectorAll("[data-hero-fade]"),
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.7, stagger: 0.1 },
+          0.45,
+        )
+        .fromTo(
+          node.querySelectorAll("[data-hero-proof]"),
+          { opacity: 0, y: 26, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.09 },
+          0.8,
+        )
+        .fromTo(
+          deviceRef.current,
+          { opacity: 0, y: 56, rotate: 2.2 },
+          { opacity: 1, y: 0, rotate: 0, duration: 1.1, ease: "power4.out" },
+          0.35,
+        );
+
+      // continuous gentle float on the device mock
+      gsap.to(deviceRef.current, {
+        y: -10,
+        rotate: -0.6,
+        duration: 3.4,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: 1.5,
+      });
+
+      // scroll parallax — device drifts up slightly slower than the page
+      gsap.to(deviceRef.current, {
+        yPercent: -6,
+        ease: "none",
+        scrollTrigger: { trigger: node, start: "top top", end: "bottom top", scrub: 0.6 },
+      });
+    }, node);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section className="section-anchor relative overflow-hidden pt-10 sm:pt-14" id="hero">
+      <HeroCanvas />
       <div className="hero-glow" />
       <div className="soft-dot-grid" />
       <div
         ref={heroRef}
-        data-reveal
         className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-8 lg:pb-16"
       >
         <div className="space-y-8 lg:col-span-7">
           <div className="space-y-5">
-            <span className="inline-flex min-h-10 items-center rounded-full bg-[color:var(--accent-gold-soft)] px-4 text-sm font-semibold text-[color:var(--brand-800)]">
+            <span
+              data-hero-fade
+              className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[color:var(--accent-gold-soft)] px-4 text-sm font-semibold text-[color:var(--brand-800)]"
+            >
+              <span className="hero-pulse-dot" aria-hidden="true" />
               {content.hero.eyebrow}
             </span>
             <div className="space-y-5">
               <h1 className="max-w-[10ch] font-['Space_Grotesk'] text-5xl font-bold leading-[0.94] tracking-[-0.05em] text-[color:var(--text-strong)] sm:text-6xl lg:text-7xl text-balance">
-                {content.hero.title}
+                <SplitTitle text={content.hero.title} />
               </h1>
-              <p className="max-w-[66ch] text-base leading-8 text-[color:var(--text-muted)] md:text-lg">{content.hero.lead}</p>
+              <p data-hero-fade className="max-w-[66ch] text-base leading-8 text-[color:var(--text-muted)] md:text-lg">
+                {content.hero.lead}
+              </p>
             </div>
           </div>
-          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start">
+          <div data-hero-fade className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start">
             <div data-testid="hero-primary-cta">
               <StoreBadgeGroup lang={lang} tooltip={content.store.tooltip} label={content.store.label} testIdPrefix="hero-store" />
             </div>
@@ -163,10 +251,10 @@ export const HeroSection = ({ content, lang }) => {
               </a>
             </Button>
           </div>
-          <p className="text-sm font-medium leading-7 text-[color:var(--text-muted)]">{content.hero.trustLine}</p>
+          <p data-hero-fade className="text-sm font-medium leading-7 text-[color:var(--text-muted)]">{content.hero.trustLine}</p>
           <div className="grid gap-4 md:grid-cols-3">
             {content.hero.proofs.map((proof) => (
-              <div key={proof.value} className="metric-card p-5">
+              <div key={proof.value} data-hero-proof className="metric-card hover-lift p-5">
                 <p className="font-['Space_Grotesk'] text-2xl font-bold tracking-[-0.04em] text-[color:var(--text-strong)]">{proof.value}</p>
                 <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">{proof.label}</p>
               </div>
@@ -174,7 +262,9 @@ export const HeroSection = ({ content, lang }) => {
           </div>
         </div>
         <div className="lg:col-span-5">
-          <DeviceMock content={content} />
+          <div ref={deviceRef} className="device-float-wrap">
+            <DeviceMock content={content} />
+          </div>
         </div>
       </div>
     </section>
@@ -236,7 +326,7 @@ export const StructureSection = ({ content }) => {
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {content.fields.items.map((field, index) => (
-            <Card key={field.label} className="surface-card rounded-[28px] p-0">
+            <Card key={field.label} data-reveal-child className="surface-card hover-lift rounded-[28px] p-0">
               <CardHeader className="space-y-3 p-6">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[color:rgba(27,42,74,0.08)] text-sm font-bold text-[color:var(--brand-800)]">
                   {index + 1}
@@ -270,7 +360,7 @@ export const VerticalsSection = ({ content }) => {
             const Icon = verticalIcons[index] || Globe2;
 
             return (
-              <Card key={card.title} className="surface-card rounded-[28px] p-0" data-testid={card.testid}>
+              <Card key={card.title} data-reveal-child className="surface-card hover-lift rounded-[28px] p-0" data-testid={card.testid}>
                 <CardHeader className="space-y-4 p-6">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:rgba(27,42,74,0.08)] text-[color:var(--brand-800)]">
                     <Icon className="h-5 w-5" />
@@ -317,7 +407,7 @@ export const SmartFeaturesSection = ({ content }) => {
             const Icon = sectionIconMap[iconKeys[index]] || Files;
 
             return (
-              <Card key={feature.title} className="surface-card rounded-[28px] p-0" data-testid={feature.testid}>
+              <Card key={feature.title} data-reveal-child className="surface-card hover-lift rounded-[28px] p-0" data-testid={feature.testid}>
                 <CardHeader className="space-y-4 p-6">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:rgba(27,42,74,0.08)] text-[color:var(--brand-800)]">
                     <Icon className="h-5 w-5" />
@@ -432,7 +522,8 @@ export const PricingSection = ({ content, lang, billingMode, setBillingMode }) =
             return (
               <Card
                 key={plan.name}
-                className={`rounded-[28px] p-0 ${plan.highlight ? "surface-card-strong price-highlight highlight-border" : "surface-card"}`}
+                data-reveal-child
+                className={`hover-lift rounded-[28px] p-0 ${plan.highlight ? "surface-card-strong price-highlight highlight-border" : "surface-card"}`}
                 data-testid={plan.testid}
               >
                 <CardHeader className="space-y-5 p-6 sm:p-8">

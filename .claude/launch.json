@@ -5,12 +5,11 @@
       "name": "meetings-ro",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["craco", "start"],
-      "port": 8080,
+      "autoPort": true,
       "cwd": "frontend",
       "env": {
         "NODE_OPTIONS": "--openssl-legacy-provider",
-        "BROWSER": "none",
-        "PORT": "8080"
+        "BROWSER": "none"
       }
     }
   ]

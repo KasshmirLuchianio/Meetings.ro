@@ -2,7 +2,14 @@ import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { PageLayout } from "@/components/PageLayout";
 import { HeroSection, ProblemSection, TestimonialsSection, FinalCta } from "@/components/Sections";
+import CinematicScroll from "@/components/CinematicScroll";
 import { landingContent, SITE_URL, OG_IMAGE_URL } from "@/content/landingContent";
+
+const cinematicLines = [
+  { text: "Record the meeting.", in: 0.02, out: 0.3 },
+  { text: "We write the report.", in: 0.36, out: 0.64 },
+  { text: "Ready in 2 minutes.", in: 0.7, out: 0.98, gold: true },
+];
 
 const HomePage = () => {
   const content = useMemo(() => landingContent.en, []);
@@ -23,6 +30,7 @@ const HomePage = () => {
         <meta property="og:image" content={OG_IMAGE_URL} />
       </Helmet>
       <HeroSection content={content} lang="en" />
+      <CinematicScroll lines={cinematicLines} />
       <ProblemSection content={content} />
       <TestimonialsSection content={content} />
       <FinalCta content={content} lang="en" />
