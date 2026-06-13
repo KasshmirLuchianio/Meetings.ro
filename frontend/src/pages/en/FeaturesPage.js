@@ -12,12 +12,12 @@ const FeaturesPage = () => {
       <Helmet>
         <html lang="en" />
         <title>Features — Meetings.ro</title>
-        <meta name="description" content="9 automatic fields, PDF and Word export, archive by locality, fast search. Everything you need for official reports." />
+        <meta name="description" content="Speaker diarization, automatic minutes to Romanian public-institution standards, PDF and DOCX export. Everything that's in the report." />
         <link rel="canonical" href={`${SITE_URL}/en/features`} />
         <link rel="alternate" hrefLang="ro" href={`${SITE_URL}/ro/functionalitati`} />
         <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en/features`} />
         <meta property="og:title" content="Features — Meetings.ro" />
-        <meta property="og:description" content="9 automatic fields, PDF and Word export, archive by locality." />
+        <meta property="og:description" content="Speaker diarization, automatic minutes, PDF and DOCX export." />
         <meta property="og:url" content={`${SITE_URL}/en/features`} />
         <meta property="og:image" content={OG_IMAGE_URL} />
       </Helmet>

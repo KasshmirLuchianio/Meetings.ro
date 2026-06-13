@@ -12,12 +12,12 @@ const DomeniiPage = () => {
       <Helmet>
         <html lang="ro" />
         <title>Domenii — Meetings.ro</title>
-        <meta name="description" content="Administrație, Banking, Legal, Jurnalism. Rapoarte adaptate automat pentru fiecare domeniu." />
+        <meta name="description" content="Consilii locale, ședințe corporative, audiențe juridice, consultații medicale, interviuri și înregistrări personale. Proces verbal adaptat fiecărui context." />
         <link rel="canonical" href={`${SITE_URL}/ro/domenii`} />
         <link rel="alternate" hrefLang="ro" href={`${SITE_URL}/ro/domenii`} />
         <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en/industries`} />
         <meta property="og:title" content="Domenii — Meetings.ro" />
-        <meta property="og:description" content="Administrație, Banking, Legal, Jurnalism. Rapoarte adaptate pentru fiecare domeniu." />
+        <meta property="og:description" content="Consilii locale, corporate, juridic, medical, interviuri și personal. Proces verbal pentru fiecare context." />
         <meta property="og:url" content={`${SITE_URL}/ro/domenii`} />
         <meta property="og:image" content={OG_IMAGE_URL} />
       </Helmet>

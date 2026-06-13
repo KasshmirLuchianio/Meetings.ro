@@ -12,12 +12,12 @@ const IndustriesPage = () => {
       <Helmet>
         <html lang="en" />
         <title>Industries — Meetings.ro</title>
-        <meta name="description" content="Administration, Banking, Legal, Journalism. Reports automatically adapted for each industry." />
+        <meta name="description" content="Local councils, corporate meetings, legal hearings, medical consultations, interviews and personal recordings. Minutes adapted to every context." />
         <link rel="canonical" href={`${SITE_URL}/en/industries`} />
         <link rel="alternate" hrefLang="ro" href={`${SITE_URL}/ro/domenii`} />
         <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en/industries`} />
         <meta property="og:title" content="Industries — Meetings.ro" />
-        <meta property="og:description" content="Administration, Banking, Legal, Journalism. Reports adapted for each industry." />
+        <meta property="og:description" content="Councils, corporate, legal, medical, interviews and personal. Minutes for every context." />
         <meta property="og:url" content={`${SITE_URL}/en/industries`} />
         <meta property="og:image" content={OG_IMAGE_URL} />
       </Helmet>

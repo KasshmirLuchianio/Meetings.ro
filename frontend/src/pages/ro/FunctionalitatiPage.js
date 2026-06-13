@@ -12,12 +12,12 @@ const FunctionalitatiPage = () => {
       <Helmet>
         <html lang="ro" />
         <title>Funcționalități — Meetings.ro</title>
-        <meta name="description" content="9 câmpuri automate, export PDF și Word, arhivare pe localități, căutare rapidă. Tot ce ai nevoie pentru rapoarte oficiale." />
+        <meta name="description" content="Diarizare pe vorbitori, proces verbal automat conform standardelor instituțiilor publice, export PDF și DOCX. Tot ce conține raportul." />
         <link rel="canonical" href={`${SITE_URL}/ro/functionalitati`} />
         <link rel="alternate" hrefLang="ro" href={`${SITE_URL}/ro/functionalitati`} />
         <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en/features`} />
         <meta property="og:title" content="Funcționalități — Meetings.ro" />
-        <meta property="og:description" content="9 câmpuri automate, export PDF și Word, arhivare pe localități." />
+        <meta property="og:description" content="Diarizare pe vorbitori, proces verbal automat, export PDF și DOCX." />
         <meta property="og:url" content={`${SITE_URL}/ro/functionalitati`} />
         <meta property="og:image" content={OG_IMAGE_URL} />
       </Helmet>

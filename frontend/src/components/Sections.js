@@ -5,15 +5,16 @@ import {
   Clock3,
   FileOutput,
   Files,
-  FolderTree,
+  FileText,
   Globe2,
   Landmark,
   Mail,
-  Newspaper,
+  Mic,
   Scale,
-  ScanSearch,
   ShieldCheck,
+  Stethoscope,
   UploadCloud,
+  User,
   Users,
 } from "lucide-react";
 
@@ -35,20 +36,17 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { SITE_URL, OG_IMAGE_URL } from "@/content/landingContent";
+import { SITE_URL, OG_IMAGE_URL, HERO_VIDEO_PATH, HERO_POSTER_PATH } from "@/content/landingContent";
 import { StoreBadgeGroup } from "@/components/StoreBadgeGroup";
-import HeroCanvas from "@/components/HeroCanvas";
 import { useReveal } from "@/hooks/useReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const sectionIconMap = {
-  archive: FolderTree,
-  export: FileOutput,
-  search: ScanSearch,
-};
+// Feature card icons (order matches content.features.cards)
+const featureIcons = [Users, FileText, FileOutput];
 
-const verticalIcons = [Building2, Landmark, Scale, Newspaper];
+// Vertical card icons (order matches content.verticals.cards)
+const verticalIcons = [Landmark, Building2, Scale, Stethoscope, Mic, User];
 
 export const createPricingSchema = (lang, content, billingMode) => {
   const offerPlans = content.pricing.plans.map((plan) => {
@@ -215,7 +213,18 @@ export const HeroSection = ({ content, lang }) => {
 
   return (
     <section className="section-anchor relative overflow-hidden pt-10 sm:pt-14" id="hero">
-      <HeroCanvas />
+      <video
+        className="hero-video"
+        src={HERO_VIDEO_PATH}
+        poster={HERO_POSTER_PATH}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
+      <div className="hero-video-scrim" aria-hidden="true" />
       <div className="hero-glow" />
       <div className="soft-dot-grid" />
       <div
@@ -394,7 +403,6 @@ export const VerticalsSection = ({ content }) => {
 
 export const SmartFeaturesSection = ({ content }) => {
   const sectionRef = useReveal();
-  const iconKeys = ["archive", "export", "search"];
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
@@ -404,7 +412,7 @@ export const SmartFeaturesSection = ({ content }) => {
         </div>
         <div className="grid gap-4 lg:grid-cols-3 lg:gap-6">
           {content.features.cards.map((feature, index) => {
-            const Icon = sectionIconMap[iconKeys[index]] || Files;
+            const Icon = featureIcons[index] || Files;
 
             return (
               <Card key={feature.title} data-reveal-child className="surface-card hover-lift rounded-[28px] p-0" data-testid={feature.testid}>

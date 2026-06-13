@@ -1,15 +1,14 @@
 import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { PageLayout } from "@/components/PageLayout";
-import { HeroSection, ProblemSection, TestimonialsSection, FinalCta } from "@/components/Sections";
-import CinematicScroll from "@/components/CinematicScroll";
+import {
+  HeroSection,
+  ProblemSection,
+  SmartFeaturesSection,
+  VerticalsSection,
+  FinalCta,
+} from "@/components/Sections";
 import { landingContent, SITE_URL, OG_IMAGE_URL } from "@/content/landingContent";
-
-const cinematicLines = [
-  { text: "Înregistrezi ședința.", in: 0.02, out: 0.3 },
-  { text: "Noi scriem raportul.", in: 0.36, out: 0.64 },
-  { text: "Gata în 2 minute.", in: 0.7, out: 0.98, gold: true },
-];
 
 const HomePage = () => {
   const content = useMemo(() => landingContent.ro, []);
@@ -18,21 +17,21 @@ const HomePage = () => {
     <PageLayout lang="ro">
       <Helmet>
         <html lang="ro" />
-        <title>Meetings.ro — Rapoarte structurate din orice ședință</title>
-        <meta name="description" content="Înregistrezi ședința. Primești raportul gata în 2 minute. Pentru Banking, Legal, Jurnalism și administrație." />
+        <title>Meetings.ro — Proces verbal automat din orice înregistrare</title>
+        <meta name="description" content="Transformă orice înregistrare audio într-un proces verbal structurat, gata de semnat. Diarizare pe vorbitori, export PDF și DOCX." />
         <meta name="theme-color" content="#FAF8F3" />
         <link rel="canonical" href={`${SITE_URL}/ro`} />
         <link rel="alternate" hrefLang="ro" href={`${SITE_URL}/ro`} />
         <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en`} />
-        <meta property="og:title" content="Meetings.ro — Rapoarte structurate din orice ședință" />
-        <meta property="og:description" content="Înregistrezi ședința. Primești raportul gata în 2 minute." />
+        <meta property="og:title" content="Meetings.ro — Proces verbal automat din orice înregistrare" />
+        <meta property="og:description" content="Transformă orice înregistrare audio într-un proces verbal structurat, gata de semnat." />
         <meta property="og:url" content={`${SITE_URL}/ro`} />
         <meta property="og:image" content={OG_IMAGE_URL} />
       </Helmet>
       <HeroSection content={content} lang="ro" />
-      <CinematicScroll lines={cinematicLines} />
       <ProblemSection content={content} />
-      <TestimonialsSection content={content} />
+      <SmartFeaturesSection content={content} />
+      <VerticalsSection content={content} />
       <FinalCta content={content} lang="ro" />
     </PageLayout>
   );
