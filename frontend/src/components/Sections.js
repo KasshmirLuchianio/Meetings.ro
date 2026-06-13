@@ -229,7 +229,7 @@ export const HeroSection = ({ content, lang }) => {
       <div className="soft-dot-grid" />
       <div
         ref={heroRef}
-        className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-8 lg:pb-16"
+        className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-8 lg:pb-16"
       >
         <div className="space-y-8 lg:col-span-7">
           <div className="space-y-5">
